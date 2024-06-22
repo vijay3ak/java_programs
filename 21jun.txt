@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class Productarr 
+{
+    static int maxsubarray(int arr1[])
+    {
+        int result=arr1[0];
+        int num=arr1.length;
+        for (int i=0;i<num;i++) {
+            int n=arr1[i];
+            for (int j=i+1;j<num;j++) 
+	    {
+                result=Math.max(result,n);
+                n=n*arr1[j];
+            }
+            result=Math.max(result,n);
+        }
+        return result;
+    }
+    public static void main(String[] args)
+    {
+        Scanner scan=new Scanner(System.in);
+	int[] arr=new int[20];
+	int length=scan.nextInt();
+	for(int i=0;i<length;i++)
+		arr[i]=scan.nextInt();
+        System.out.println("Maximum product array:"+maxsubarray(arr));
+    }
+}

@@ -1,0 +1,34 @@
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scan=new Scanner(System.in);
+        System.out.print("Enter a string : ");
+        String str=scan.nextLine();
+        int magicValue=calculate(str);
+        System.out.println("Magic value : "+magicValue);
+    }
+    public static int calculate(String str)
+    {
+        int magicValue=1;
+        for (int i=0;i<str.length();i++)
+        {
+            char ch=str.charAt(i);
+            int asciiValue=(int)ch;
+            if(over(magicValue,asciiValue))
+                break;
+            magicValue*=asciiValue;
+        }
+        return magicValue;
+    }
+    public static boolean over(int magicValue,int asciiValue)
+    {
+        boolean ans;
+        if(magicValue>Integer.MAX_VALUE/asciiValue)
+            ans=true;
+        else
+            ans=false;
+        return ans;
+    }
+}

@@ -1,0 +1,36 @@
+//find sum of all minimum and maximum elements Of Sub-array Size k
+import java.util.Arrays;
+public class Main
+{
+    static int SumOfKsubArray(int[] arr, int N, int k)
+    {
+        int sum=0;
+        for(int i=0;i<N;i++) 
+        {
+            int length=0;
+            for(int j=i;j<N;j++) 
+            {
+                length++;
+                if(length==k) 
+                {
+                    int maxi=Integer.MIN_VALUE;
+                    int mini=Integer.MAX_VALUE;
+                    for(int m=i;m<=j;m++)
+                    {
+                        maxi=Math.max(maxi,arr[m]);
+                        mini=Math.min(mini,arr[m]);
+                    }
+                    sum+=maxi+mini;
+                }
+            }
+        }
+        return sum;
+    }
+    public static void main(String[] args)
+    {
+        int[] arr={2,5,-1,7,-3,-1,-2};
+        int N=arr.length;
+        int k=4;
+        System.out.println(SumOfKsubArray(arr,N,k));
+    }
+}
